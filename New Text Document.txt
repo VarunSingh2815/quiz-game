@@ -1,0 +1,44 @@
+CREATE DATABASE quiz_game;
+USE quiz_game;
+
+CREATE TABLE questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    topic VARCHAR(255) NOT NULL,
+    question VARCHAR(255) NOT NULL,
+    option1 VARCHAR(100) NOT NULL,
+    option2 VARCHAR(100) NOT NULL,
+    option3 VARCHAR(100) NOT NULL,
+    option4 VARCHAR(100) NOT NULL,
+    answer VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE users (
+    username VARCHAR(255) PRIMARY KEY,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE results (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    topic VARCHAR(255) NOT NULL,
+    score INT NOT NULL,
+    FOREIGN KEY (username) REFERENCES users(username)
+);
+
+-- Insert some sample questions
+INSERT INTO questions (topic, question, option1, option2, option3, option4, answer) VALUES
+('DSA', 'What is the time complexity of binary search?', 'O(n)', 'O(log n)', 'O(n^2)', 'O(1)', 'O(log n)'),
+('DSA', 'Which data structure uses LIFO principle?', 'Queue', 'Stack', 'Tree', 'Graph', 'Stack'),
+('DSA', 'What is the maximum number of children a binary tree node can have?', '1', '2', '3', '4', '2'),
+('DSA', 'Which algorithm is used to find the shortest path in a graph?', 'DFS', 'BFS', 'Dijkstra', 'Kruskal', 'Dijkstra'),
+('DSA', 'What data structure is used in a BFS algorithm?', 'Stack', 'Queue', 'Tree', 'Graph', 'Queue'),
+('DBMS', 'What is a primary key?', 'A unique identifier', 'A foreign key', 'A secondary key', 'A primary function', 'A unique identifier'),
+('DBMS', 'What does SQL stand for?', 'Structured Query Language', 'Standard Query Language', 'Simple Query Language', 'Sequential Query Language', 'Structured Query Language'),
+('DBMS', 'Which type of join returns all rows from the left table and the matched rows from the right table?', 'Inner Join', 'Left Join', 'Right Join', 'Full Join', 'Left Join'),
+('DBMS', 'What is normalization?', 'The process of organizing data', 'The process of defining keys', 'The process of creating indexes', 'The process of deleting data', 'The process of organizing data'),
+('DBMS', 'What does ACID stand for in databases?', 'Atomicity, Consistency, Isolation, Durability', 'Access, Consistency, Isolation, Durability', 'Atomicity, Consistency, Inconsistency, Durability', 'Atomicity, Clarity, Isolation, Durability', 'Atomicity, Consistency, Isolation, Durability'),
+('Python', 'Which keyword is used to define a function in Python?', 'func', 'def', 'function', 'define', 'def'),
+('Python', 'Which data type is immutable in Python?', 'List', 'Dict', 'Set', 'Tuple', 'Tuple'),
+('Python', 'What is the output of print(2**3)?', '6', '8', '9', '12', '8'),
+('Python', 'Which method is used to add an element at the end of a list?', 'append()', 'insert()', 'add()', 'extend()', 'append()'),
+('Python', 'What does PEP stand for?', 'Python Enhancement Proposal', 'Python Easy Program', 'Python Execution Process', 'Python Environmental Policy', 'Python Enhancement Proposal');
